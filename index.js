@@ -13,7 +13,7 @@ const baseApiUrl = async () => {
 }; 
 
 app.get('/', async (req, res) =>{
-  res.sendFile(process.cwd() + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 })
 app.get('/alldl', async (req, res) => {
   try {
