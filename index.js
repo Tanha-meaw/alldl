@@ -7,6 +7,10 @@ const app = express();
 const port = 3000;
 
 app.use(cors());
+const baseApiUrl = async () => {
+  const base = await axios.get('https://raw.githubusercontent.com/Mostakim0978/D1PT0/refs/heads/main/baseApiUrl.json');
+  return base.data.api;
+}; 
 
 app.get('/alldl', async (req, res) => {
   try {
@@ -16,7 +20,7 @@ app.get('/alldl', async (req, res) => {
       return res.status(400).json({ error: 'URL parameter is required' });
     }
 
-  const response = await axios.get(`https://www.noobs-api.rf.gd/dipto/alldl?url=${url}`, {
+  const response = await axios.get(`${await baseApiUrl()}/alldl?url=${url}`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
       }
