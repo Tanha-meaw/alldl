@@ -12,6 +12,9 @@ const baseApiUrl = async () => {
   return base.data.api;
 }; 
 
+app.get('/', async (req, res) =>{
+  res.sendFile(process.cwd() + '/index.html');
+})
 app.get('/alldl', async (req, res) => {
   try {
     const { url } = req.query;
